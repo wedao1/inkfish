@@ -67,7 +67,12 @@ def get_contends_arr(contends):
         # print(contends_arr[i])
     return contends_arr_new
  
+def get_host_list(find):
+    a=get_config(find)
+    s=[]
+    for k in a:
+        s.append(k+"@"+a[k].get("hostname"))
+    return ",".join(s)
  
 if __name__ == '__main__':
-    print(get_config("lo"))
-    print get_private_key()
+    print get_host_list("lo")

@@ -24,5 +24,12 @@ class MyApp(cli.Application):
 
     def main(self):
         pssh.cmd(self.name,self.command,self.style)
+
+@MyApp.subcommand("list")       
+class MyAppList(cli.Application):
+    """Show all hosts"""
+    def main(self):
+        print("list")
+
 if __name__ == "__main__":
     MyApp.run()
