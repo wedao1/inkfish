@@ -21,9 +21,9 @@ class paramikoThreading(threading.Thread):
         ssh.set_missing_host_key_policy(know_host)
  
         # 连接服务器
- 	if(self.password==""):
+        if(self.password==""):
         #    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-  	    ssh.load_system_host_keys()
+            ssh.load_system_host_keys()
             ssh.connect(hostname=self.host, port=self.port, username=self.username, pkey=sshconfig.get_private_key())
         else:
             ssh.connect(hostname=self.host,port=self.port,username=self.username,password=self.password)

@@ -1,4 +1,3 @@
-
 # _*_ coding: utf-8 _*_
 import os 
 import pandas as pd
@@ -75,4 +74,4 @@ def get_host_list(find):
     return ",".join(s)
  
 if __name__ == '__main__':
-    print get_host_list("lo")
+    print(get_host_list("lo"))
