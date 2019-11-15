@@ -31,7 +31,7 @@ class paramikoThreading(threading.Thread):
         if(self.style==1): 
             print("[%s@%s]# %s\n%s"%(self.name,self.host,self.command,stdout.read().decode()))
         elif(self.style==2):
-            print("[%s@%s]# %s"%(self.name,self.host,stdout.read().decode()))
+            print("[%s@%s]:\n%s"%(self.name,self.host,stdout.read().decode()))
     
         ssh.close()
 
@@ -40,7 +40,7 @@ def cmd(find,str,style=1):
     t_pool = []
     pool = sshconfig.get_config(find); 
     if(style==2):
-        print("%s"%(str))    
+        print(">>>\n%s"%(str))    
     for onehost in pool:
         t = paramikoThreading(
             name=onehost,

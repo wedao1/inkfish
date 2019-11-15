@@ -6,6 +6,7 @@ class Tag():
     def __init__(self,path="./tags/"):
         self.path = path
         self.tags=[]
+        self.load()
     def load(self):
         self.tags=os.listdir(self.path)
     #def add(name,text):

@@ -1,18 +1,26 @@
 # -*- coding:UTF-8 -*-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+import os
 import pssh
 import sshconfig
-import Tag
+from tag import Tag
+
 class Session():
-    def __init__(self,style=1,name="lo"):
+    def __init__(self,style=2,name="lo"):
         self.name="lo"
         self.style=style
         self.active=True 
 
     def setName(self,keyword="lo"):
-        cmd=raw_input("input hostname keyword to start:")
+        cmd=raw_input("search keyword of hostnames to start:")
         self.name=cmd
         print(sshconfig.get_host_list(self.name))
-
+    def setStyle(self):
+        cmd=int(raw_input("set style 1 or 2 #"))
+        self.style=cmd
+        print("set style = "+str(cmd))
     def scmd(self,cmd):
         pssh.cmd(self.name,cmd,self.style)
     def run(self):
@@ -24,6 +32,8 @@ class Session():
             elif(cmd == ":tag"):
                 t=Tag()
                 self.scmd(t.menu())
+            elif(cmd == ":style"):
+                self.setStyle()
             elif(cmd == ":q"):
                 self.active=False
             elif(cmd != ""):
